@@ -12,7 +12,7 @@ from math import sqrt, acos, degrees, radians, cos, sin, fsum, hypot, atan2
 class Vector(tuple):
 
     '''"Class to calculate the usual operations with vectors in bi and
-    tridimensional coordinates'''
+    tridimensional coordinates. Too with n-dimmensinal.'''
     # __slots__=('V') #It's not possible because V is a variable list of param.
     def __new__(cls, *V):
         '''The new method, we initialize the coordinates of a vector.
@@ -36,7 +36,7 @@ class Vector(tuple):
     __radd__ = __add__
 
     def __sub__(self, V):
-        '''The operator subtraction overloaded. You can subtract points writing
+        '''The operator subtraction overloaded. You can subtract vectors writing
         V - W, where V and W are two vectors.'''
         if len(self) != len(V):
             raise IndexError('Vectors must have same dimmensions.')
@@ -44,7 +44,14 @@ class Vector(tuple):
             subtracted = tuple(a - b for a, b in zip(self, V))
             return Vector(*subtracted)
 
-    __rsub__ = __sub__
+    def __rsub__(self, V):
+        '''The operator subtraction overloaded. You can subtract vectors writing
+        W - V, where V and W are two vectors.'''
+        if len(self) != len(V):
+            raise IndexError('Vectors must have same dimmensions.')
+        else:
+            subtracted = tuple(b - a for a, b in zip(self, V))
+            return Vector(*subtracted)        
 
     def __mul__(self, V):
         '''The operator mult overloaded. You can multipy 2 vectors coordinate
@@ -64,9 +71,10 @@ class Vector(tuple):
         if type(V) == type(self):
             if len(self) != len(V):
                 raise IndexError('Vectors must have same dimmensions.')
-            else:
-                divided = tuple(a / b for a, b in zip(self, V))
-        elif isinstance(V, type(1)) or isinstance(V, type(1.0)):
+            if 0 in V:
+                raise ZeroDivisionError('Division by 0.')
+            divided = tuple(a / b for a, b in zip(self, V))
+        elif isinstance(V, int) or isinstance(V, float):
             divided = tuple(a / V for a in self)
         return Vector(*divided)
 
