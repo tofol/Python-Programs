@@ -1,0 +1,41 @@
+QDialog {
+    background-color: #2b5b84;
+}
+QLineEdit {
+    background-color: rgba(108, 166, 241, 0.5);
+    border-radius: 5px;
+    padding: 2px;
+    margin-bottom: 20px;
+    color: black;
+    border: 2px solid white;
+}
+QPushButton {
+    color: white;
+    background-color: #1e415e;
+    border-radius: 10px;
+    padding: 1px;
+    text-align: center;
+}
+QPushButton#About {
+    color: white;
+    font-size: 16px;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+QPushButton#About:hover {
+    color: black;
+    background-color: #52366c;
+}
+QPushButton:hover {
+    color: black;
+    background-color: #52366c;
+}
+QToolTip {
+    color: white;
+    background-color: #1e415e;
+    border-radius: 5px;
+    padding: 2px;
+    border: 1px solid white;
+}
