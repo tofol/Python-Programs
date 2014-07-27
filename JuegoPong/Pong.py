@@ -37,10 +37,10 @@ class Pelota(Frame):
         self.textVidas = self.canvas.create_text(50, 50, text='Health: ' + str(self.vidas), fill='green',
                                                  font=('Courier', 16), anchor='w')
         self.canvas.move(self.ball, 245, 100)
-        empezar = list(range(-3, 3))
-        empezar.remove(0)
-        random.shuffle(empezar)
-        self.x = empezar[0]
+        self.empezar = list(range(-3, 3))
+        self.empezar.remove(0)
+        random.shuffle(self.empezar)
+        self.x = self.empezar[4]
         self.y = -3
         self.canvas_height = self.canvas.winfo_reqheight()
         self.canvas_width = self.canvas.winfo_reqwidth()
@@ -84,6 +84,7 @@ class Pelota(Frame):
         """
         raqueta_pos = self.canvas.coords(self.raqueta.raqueta)
         if pos[2] >= raqueta_pos[0] and pos[0] <= raqueta_pos[2] and raqueta_pos[1] <= pos[3] <= raqueta_pos[3]:
+            self.x += self.raqueta.x
             return True
         return False
 
@@ -129,6 +130,7 @@ class Pelota(Frame):
             self.y = 3
         if pos[3] >= self.canvas_height:
             self.y = -3
+            self.x += 2 * self.x + self.raqueta.x ** 2
         if self.golpea_raqueta(pos):
             self.y = -3
             self.puntuar()
