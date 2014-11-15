@@ -275,7 +275,7 @@ class IdlePlus(tk.Frame):
         self.labelNumberOfLines.configure(bg='#272822', fg='white')
         self.labelNumberOfLines.pack(side='right', fill='x', padx=10, pady=2)
         self.labelLinePosition = tk.Label(self.frameStatus,
-            text=self.get_position(event=None))
+            textvariable=self.get_position())
         self.labelLinePosition.configure(bg='#272822', fg='white')
         self.labelLinePosition.pack(side='left', fill='x', padx=10, pady=2)
 
@@ -287,8 +287,11 @@ class IdlePlus(tk.Frame):
 
     def get_position(self, event=None):
         """get the line and column number of the text insertion point"""
+        self.line = tk.StringVar()
+        self.column = tk.StringVar()
         self.line, self.column = self.textView.index('insert').split('.')
-        self.s = ('Line : {0} - Column : {1}'.format(self.line, self.column))
+        self.s = tk.StringVar()
+        self.s.set(('Line : {0} - Column : {1}'.format(self.line, self.column)))
         print(self.s)
         return self.s
 
