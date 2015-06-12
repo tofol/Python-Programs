@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='es'>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+        <meta name='apple-mobile-web-app-capable' content='yes'>
+        <title>Tests With Bokeh</title>
+
+        <link rel='shortcut icon' href='./img/favicon.ico'/>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link href='./css/bokeh.min.css' rel='stylesheet'>
+        <link href='./css/styles.css' rel='stylesheet'>
+
+    </head>
+    <body>
+        <h1> Equilateral Hyperbola And Linear Regression</h1>
+        <section class='myplot'></section>
+         <p class='latex_figure_caption'>
+            The function is $f(x)=\frac{1}{x}$
+        </p>
+        <section class='myplot1'></section>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-condensed">
+            <thead>
+                <th class="text-center"> Flats Problem</th>
+                <th class="text-center">$\mu$</th>
+                <th class="text-center">Slope</th>
+                <th class="text-center">$R^2\, ( \% )$</th>
+                <th class="text-center">CorrCoef ( % )</th>
+                <th class="text-center">p-value</th>
+            </thead>
+            <tbody>
+                <tr class="text-center">
+                    <th class="text-center">Number Of Rooms</th>
+                    <td>3.7</td>
+                    <td>$m_{xy}=0.644$</td>
+                    <td>77.23 %</td>
+                    <td>87.87 %</td>
+                    <td>0.00081</td>
+                </tr>
+                <tr class="text-center">
+                    <th class="text-center">Number Of Persons</th>
+                    <td>3.5</td>
+                    <td>$m_{yx}=1.198$</td>
+                    <td>77.23 %</td>
+                    <td>87.87 %</td>
+                    <td>0.00081</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <h2>Plotting The Floor Function</h2>
+        <section class='myplot2'></section>
+        <p class="latex_figure_caption">
+            $f(x)=\lfloor x \rfloor$
+        </p>
+
+        <script src='./js/jquery.js'></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src='./js/bokeh.min.js'></script>
+        <script src='./js/figures.js'></script>
+        <script src='./js/figures1.js'></script>
+        <script src='./js/figures2.js'></script>
+
+        <script type='text/x-mathjax-config'>
+          MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'],['\\(','\\)']]}
+          });
+        </script>
+        <script type='text/javascript' src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full'></script>
+    </body>
+</html>

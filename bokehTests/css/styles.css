@@ -1,0 +1,25 @@
+body {
+    margin: 0 auto;
+    background: rgba(69, 78, 247, 0.2);
+}
+table {
+    background: white;
+}
+h1, h2 {
+    margin-left: 200px;
+    margin-bottom: 50px;
+}
+.plotdiv {
+    margin-left: 150px;
+}
+.latex_figure_caption {
+    margin-left: 250px; font-size: 1.5em; font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.table-responsive {
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-bottom: 30px;
+    width: 600px;
+}
