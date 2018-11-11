@@ -1,7 +1,10 @@
 import sqlite3
-from tkinter import *
+import webbrowser
 from tkinter import messagebox
 from PIL import ImageTk
+import tkinter.font as tk_font
+from tk_hyperlink_manager.tk_hyperlink_manager import *
+from tkinter_tooltips.tkinter_tooltips import CreateToolTip
 
 __author__ = 'Painkillers'
 __email__ = 'author@hotmail.com'
@@ -107,7 +110,8 @@ delete_icon = load_icons(app_icons['delete'])
 
 def my_toolbar():
     button_configure = {
-        'relief': 'sunken',
+        'relief': 'groove',
+        'justify': 'center',
         'bg': '#272822',
         'activebackground': '#272822'
     }
@@ -121,6 +125,7 @@ def my_toolbar():
     create_button = Button(toolbar, image=create_icon, command=create)
     create_button.configure(**button_configure)
     create_button.pack(**button_layout)
+
     read_button = Button(toolbar, image=read_icon, command=read)
     read_button.configure(**button_configure)
     read_button.pack(**button_layout)
@@ -131,6 +136,17 @@ def my_toolbar():
     delete_button.configure(**button_configure)
     delete_button.pack(**button_layout)
     toolbar.pack(side='top', fill='x')
+    # tooltip_obj = ToolTips([create_button, read_button], tooltip_text, font_obj)
+
+
+def click1():
+    url = 'https://fsf.org/'
+    webbrowser.open_new_tab(url)
+
+
+def click2():
+    url = 'https://www.gnu.org/licenses/gpl.html'
+    webbrowser.open_new_tab(url)
 
 
 def window_license():
@@ -148,12 +164,18 @@ def window_license():
     label_3.pack(side='top', padx=10)
     label_4 = Label(the_frame, text='Version 3, 29 June 2007\n')
     label_4.pack(side='top', padx=10)
-    gpl_v3 = 'Copyright © 2007 Free Software\nFoundation, Inc. <https://fsf.org/>.\n' \
-             'Everyone is permitted to copy and\ndistribute verbatim copies of this\n license document, ' \
-             'but changing it\nis not allowed.\n\n<https://www.gnu.org/licenses/gpl.html>'
+    gpl_v3 = 'Copyright © 2007 Free Software\nFoundation, Inc. '
+    gpl_v3_2 = '\nEveryone is permitted to copy and\ndistribute verbatim copies of this\n license document, ' \
+               'but changing it\nis not allowed. '
     text_1 = Text(the_frame, width=240, height=10)
     text_1.pack(side='top', padx=10)
-    text_1.insert('end', gpl_v3)
+    text_1.insert('insert', gpl_v3)
+
+    hyperlink = HyperlinkManager(text_1)
+    text_1.insert('insert', 'FSF', hyperlink.add(click1))
+    text_1.insert('insert', gpl_v3_2)
+    text_1.insert('insert', 'License', hyperlink.add(click2))
+    text_1.insert('insert', '\n\n')
     license_button = Button(the_frame, text='Quit', command=the_license.destroy)
     license_button.pack(side='top', padx=15, pady=15)
     the_license.transient(root)
